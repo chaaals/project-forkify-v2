@@ -6,7 +6,6 @@ function App() {
   return (
     <>
       <ForkifyNavBar />
-      <h1>Forkify Project</h1>
       <ForkifySearchBar />
     </>
   );

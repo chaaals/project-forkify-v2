@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { searchRecipes, queryRecipe } from "./searchedRecipes.slice";
 
+import SearchBar from "../../components/searchbar.component";
+
 const ForkifySearchBar = () => {
   const [query, setQuery] = useState("");
   const searchedRecipes = useSelector(searchRecipes);
@@ -19,18 +21,12 @@ const ForkifySearchBar = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmitQuery}>
-        <input
-          name="query"
-          type="text"
-          placeholder="search here..."
-          onChange={handleInputQuery}
-          value={query}
-        />
-        <button type="submit" onClick={handleSubmitQuery}>
-          QUERY SEARCH
-        </button>
-      </form>
+      <SearchBar
+        onSubmit={handleSubmitQuery}
+        onChange={handleInputQuery}
+        onClick={handleSubmitQuery}
+        value={query}
+      />
       <div>
         <h4>RECIPE_TITLE_RESULTS:</h4>{" "}
         {searchedRecipes.length !== 0 ? (
