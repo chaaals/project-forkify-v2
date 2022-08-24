@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchRecipes } from "../api/fetchData";
+import { fetchRecipes } from "../../api/fetchData";
 
 // reducer
 const searchedRecipesSlice = createSlice({

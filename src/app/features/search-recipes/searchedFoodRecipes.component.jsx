@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { searchRecipes, queryRecipe } from "../features/searchedRecipes.slice";
+import { searchRecipes, queryRecipe } from "./searchedRecipes.slice";
 
 const ForkifySearchBar = () => {
   const [query, setQuery] = useState("");
