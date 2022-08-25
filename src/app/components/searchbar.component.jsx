@@ -24,15 +24,27 @@ const SearchContainer = styled.div`
 const Search = styled.form`
   display: flex;
   width: 100%;
+
+  &:focus-within {
+    input {
+      outline: none;
+      border: 1px solid var(--secondary-color);
+    }
+    button {
+      background-color: var(--secondary-color);
+    }
+  }
 `;
 
 const InputSearch = styled.input`
   width: 100%;
-  font-size: 1.25rem;
+  font-size: 1rem;
   padding: 0.5em 1em;
 
   border-radius: 100px;
   border: 1px solid var(--primary-color);
+
+  transition: 300ms ease-in-out;
 `;
 
 const SubmitSearch = styled.button`
@@ -41,13 +53,15 @@ const SubmitSearch = styled.button`
   right: 0;
 
   font-size: 1rem;
-  padding: 0.85em 1.25em;
+  padding: 0.6em 1em;
 
   color: #fff;
   background-color: var(--primary-color);
 
   cursor: pointer;
   border: none;
+
+  transition: 300ms ease-in-out;
 `;
 
 const SearchBar = ({ onSubmit, onChange, onClick, value }) => {

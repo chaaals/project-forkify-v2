@@ -30,6 +30,8 @@ const NavbarLogo = styled.div`
   display: flex;
   align-items: center;
   gap: 4px;
+
+  cursor: pointer;
 `;
 
 const NavbarOptions = styled.div`
@@ -59,6 +61,11 @@ const NavTextOption = styled.button`
 
   border: none;
   cursor: pointer;
+
+  transition: 300ms ease-in-out;
+  &:hover {
+    color: var(--secondary-color);
+  }
 `;
 
 const ForkifyNavBar = () => {
