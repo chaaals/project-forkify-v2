@@ -18,20 +18,6 @@ const ForkifySearchBar = () => {
     setQuery(value);
   };
 
-  // const dishesJSX =
-  //   searchedRecipes.length !== 0 ? (
-  //     searchedRecipes.map((recipe) => (
-  //       <DishCard
-  //         id={recipe.id}
-  //         title={recipe.title}
-  //         author={recipe.publisher}
-  //         IMG_URL={recipe.image_url}
-  //       />
-  //     ))
-  //   ) : (
-  //     <h1>What are you waiting for? Start searching!</h1>
-  //   );
-
   return (
     <>
       <SearchBar

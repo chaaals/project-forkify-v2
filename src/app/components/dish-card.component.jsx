@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { UndecoratedLink } from "./navbar.component";
+
 const DishCardContainer = styled.div`
   display: flex;
   align-items: center;
@@ -54,13 +56,15 @@ const DishAuthor = styled.p`
 
 const DishCard = ({ id, author, title, IMG_URL }) => {
   return (
-    <DishCardContainer id={id}>
-      <DishImg src={IMG_URL} />
-      <DishContent>
-        <DishTitle title={title}>{title}</DishTitle>
-        <DishAuthor>{author}</DishAuthor>
-      </DishContent>
-    </DishCardContainer>
+    <UndecoratedLink to={`/search/dish/${id}`}>
+      <DishCardContainer id={id}>
+        <DishImg src={IMG_URL} />
+        <DishContent>
+          <DishTitle title={title}>{title}</DishTitle>
+          <DishAuthor>{author}</DishAuthor>
+        </DishContent>
+      </DishCardContainer>
+    </UndecoratedLink>
   );
 };
 

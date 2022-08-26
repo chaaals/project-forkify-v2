@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useFoodSearch } from "../features/search-recipes/searchedFoodRecipes.hook";
-import DishCard from "./dish-card.component";
+import DishCard from "../../app/components/dish-card.component";
+import RecipeCard from "../../app/components/recipe-card.component";
 
 const SearchResultContainer = styled.section`
   display: flex;
@@ -54,27 +54,23 @@ const DishCardContainer = styled.div`
 
 const RecipeCardContainer = styled.div``;
 
-const ForkifySearchResult = () => {
-  const { searchedRecipes } = useFoodSearch();
-  const dishJSX =
-    searchedRecipes.length !== 0 ? (
-      searchedRecipes.map((recipe) => (
-        <DishCard
-          id={recipe.id}
-          title={recipe.title}
-          author={recipe.publisher}
-          IMG_URL={recipe.image_url}
-        />
-      ))
-    ) : (
-      <h4>Start Searching!</h4>
-    );
+const ForkifySearchResult = ({ searchedRecipes }) => {
+  const dishJSX = searchedRecipes.map((recipe) => (
+    <DishCard
+      id={recipe.id}
+      title={recipe.title}
+      author={recipe.publisher}
+      IMG_URL={recipe.image_url}
+    />
+  ));
   return (
     <SearchResultContainer>
       <SearchResult>
         <DishCardContainer>{dishJSX}</DishCardContainer>
         <RecipeCardContainer>
-          <div>ello</div>
+          <div>
+            <RecipeCard />
+          </div>
         </RecipeCardContainer>
       </SearchResult>
     </SearchResultContainer>

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,6 +28,10 @@ const Nav = styled.div`
   width: 75%;
 `;
 
+export const UndecoratedLink = styled(Link)`
+  text-decoration: none;
+`;
+
 const NavbarLogo = styled.div`
   display: flex;
   align-items: center;
@@ -49,12 +55,13 @@ const NavTextLogo = styled.h2`
   font-size: 1.5rem;
 `;
 
-const NavTextOption = styled.button`
+const NavTextOption = styled(Link)`
   display: flex;
   gap: 4px;
 
   font-family: "Raleway", sans-serif;
   font-size: 1rem;
+  text-decoration: none;
 
   color: var(--primary-color);
   background-color: white;
@@ -72,16 +79,18 @@ const ForkifyNavBar = () => {
   return (
     <Navbar>
       <Nav>
-        <NavbarLogo>
-          <ForkifyLogo />
-          <NavTextLogo>Forkify</NavTextLogo>
-        </NavbarLogo>
+        <UndecoratedLink to="/">
+          <NavbarLogo>
+            <ForkifyLogo />
+            <NavTextLogo>Forkify</NavTextLogo>
+          </NavbarLogo>
+        </UndecoratedLink>
         <NavbarOptions>
-          <NavTextOption>
+          <NavTextOption to="/search">
             <FontAwesomeIcon icon={faMagnifyingGlass} />
             Search
           </NavTextOption>
-          <NavTextOption>
+          <NavTextOption to="/basket">
             <FontAwesomeIcon icon={faShoppingBasket} />
             Basket
           </NavTextOption>
