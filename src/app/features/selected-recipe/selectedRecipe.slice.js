@@ -8,6 +8,9 @@ const selectedRecipeSlice = createSlice({
     loadRecipe: (state, action) => {
       return action.payload;
     },
+    clearSelectedRecipe: (state, action) => {
+      return {};
+    },
   },
 });
 
