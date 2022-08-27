@@ -6,6 +6,7 @@ import ForkifySearchResult from "./search-result-container.component";
 
 const SearchRoute = () => {
   const { searchedRecipes } = useFoodSearch();
+  console.log(searchedRecipes);
   return (
     <>
       <ForkifySearchBar />

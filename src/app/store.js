@@ -4,7 +4,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import ingredientBasketReducer from "../app/features/ingredientBasket.slice";
 import pinnedRecipesReducer from "../app/features/pinnedRecipes.slice";
 import searchedRecipesReducer from "../app/features/search-recipes/searchedRecipes.slice";
-import selectedRecipeReducer from "../app/features/selectedRecipe.slice";
+import selectedRecipeReducer from "../app/features/selected-recipe/selectedRecipe.slice";
 
 const rootReducer = {
   ingredientBasket: ingredientBasketReducer,

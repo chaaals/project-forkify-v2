@@ -18,12 +18,16 @@ export const searchRecipes = (state) => state.searchedRecipes;
 // thunk action creator
 export const queryRecipe = (query) => {
   return async (dispatch, getState) => {
-    const payload = await fetchRecipes(query);
-    const { recipes } = payload.data;
-    dispatch({
-      type: "searchedRecipes/fetchRecipes",
-      payload: recipes,
-    });
+    try {
+      const payload = await fetchRecipes(query);
+      const { recipes } = payload.data;
+      dispatch({
+        type: "searchedRecipes/fetchRecipes",
+        payload: recipes,
+      });
+    } catch (e) {
+      console.log(e.message);
+    }
   };
 };
 

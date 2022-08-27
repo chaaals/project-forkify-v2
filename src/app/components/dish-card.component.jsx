@@ -8,10 +8,11 @@ const DishCardContainer = styled.div`
   align-items: center;
   gap: 12px;
 
-  max-width: 300px;
+  max-width: 285px;
   padding: 1rem;
   background-color: var(--neutral-color1);
 
+  border-radius: 8px;
   cursor: pointer;
   transition: 300ms ease-in-out;
 
@@ -56,7 +57,7 @@ const DishAuthor = styled.p`
 
 const DishCard = ({ id, author, title, IMG_URL }) => {
   return (
-    <UndecoratedLink to={`/search/dish/${id}`}>
+    <UndecoratedLink to={`/search/${id}`}>
       <DishCardContainer id={id}>
         <DishImg src={IMG_URL} />
         <DishContent>
