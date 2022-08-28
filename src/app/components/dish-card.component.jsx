@@ -69,7 +69,7 @@ const DishAuthor = styled.p`
 const DishCard = ({ id, author, title, IMG_URL }) => {
   return (
     <UndecoratedLink to={`/search/${id}`}>
-      <DishCardContainer id={id}>
+      <DishCardContainer key={id} id={id}>
         <DishImg src={IMG_URL} />
         <DishContent>
           <DishTitle title={title}>{title}</DishTitle>

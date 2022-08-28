@@ -1,9 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import { useDispatch } from "react-redux";
-import { addToBasket } from "../features/ingredient-basket/ingredientBasket.slice";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheck,
@@ -130,27 +127,14 @@ const RecipeCard = ({
   ingredients,
   servings,
   cooking_time,
+  onClick,
   source_url,
   image_url,
 }) => {
-  const dispatch = useDispatch();
-
-  const addRecipeToBasket = (e) => {
-    e.preventDefault();
-    dispatch(
-      addToBasket({
-        dishName: title,
-        ingredients: ingredients,
-        source: source_url,
-      })
-    );
-  };
-
   return (
     <RecipeCardContainer>
       <Recipe>
         <RecipeImg src={image_url} />
-        {/* TODO: Add serving size and time to make */}
         <RecipeSection>
           <RecipeName>{title}</RecipeName>
           <RecipeAuthor>{publisher}</RecipeAuthor>
@@ -185,7 +169,10 @@ const RecipeCard = ({
         <RecipeSection>
           <HowToComponent source={source_url} author={publisher} />
           <RecipeButtonContainer>
-            <RecipeButton typeOfButton="add" onClick={addRecipeToBasket}>
+            <RecipeButton
+              typeOfButton="add"
+              onClick={(e) => onClick(e, { title, ingredients, source_url })}
+            >
               Add to Basket
             </RecipeButton>
             <RecipeButton typeOfButton="pin">Pin Recipe</RecipeButton>

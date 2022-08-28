@@ -5,9 +5,6 @@ import { faAnglesLeft } from "@fortawesome/free-solid-svg-icons";
 
 import { UndecoratedLink } from "./navbar.component";
 
-import { useDispatch } from "react-redux";
-import { clearSelectedRecipe } from "../features/selected-recipe/selectedRecipe.slice";
-
 const BreadCrumbContainer = styled.div`
   display: flex;
   align-items: center;
@@ -30,13 +27,9 @@ const Breadcrmb = styled.div`
   width: 85%;
 `;
 
-const BreadCrumb = () => {
-  const dispatch = useDispatch();
-  const backToSearchEvent = () => {
-    dispatch(clearSelectedRecipe());
-  };
+const BreadCrumb = ({ path, onClick = null }) => {
   return (
-    <UndecoratedLink to="/search" onClick={backToSearchEvent}>
+    <UndecoratedLink to={path} onClick={onClick}>
       <BreadCrumbContainer>
         <Breadcrmb>
           <FontAwesomeIcon icon={faAnglesLeft} />

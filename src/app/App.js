@@ -6,7 +6,7 @@ import ForkifyNavBar from "./components/navbar.component";
 import Home from "../routes/home-route/home-placeholder.component";
 import SearchRoute from "../routes/search-route/search-route.component";
 import SelectedRecipeRoute from "../routes/selected-recipe-route/selected-recipe-route.component";
-import Basket from "../routes/basket-route/basket-placeholder.component";
+import Basket from "../routes/basket-route/basket-route.component";
 
 function App() {
   return (

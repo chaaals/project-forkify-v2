@@ -11,6 +11,16 @@ const SearchBarContainer = styled.section`
 
   width: 100%;
   margin-top: 25px;
+
+  animation: fadein 2s;
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
 `;
 
 const SearchContainer = styled.div`

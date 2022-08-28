@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { Link } from "react-router-dom";
+import { useDisplayIngredients } from "../features/ingredient-basket/ingredientBasket.hook";
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -73,9 +74,12 @@ const NavTextOption = styled(Link)`
   &:hover {
     color: var(--secondary-color);
   }
+
+  position: relative;
 `;
 
 const ForkifyNavBar = () => {
+  const { basket } = useDisplayIngredients();
   return (
     <Navbar>
       <Nav>
@@ -92,7 +96,7 @@ const ForkifyNavBar = () => {
           </NavTextOption>
           <NavTextOption to="/basket">
             <FontAwesomeIcon icon={faShoppingBasket} />
-            Basket
+            Basket {`(${basket.length})`}
           </NavTextOption>
         </NavbarOptions>
       </Nav>
