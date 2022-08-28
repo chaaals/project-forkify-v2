@@ -9,13 +9,17 @@ const searchedRecipesSlice = createSlice({
     fetchRecipes: (state, action) => {
       return [...action.payload];
     },
+    clearFetchedRecipes: () => {
+      return [];
+    },
   },
 });
 
 // selectors
 export const searchRecipes = (state) => state.searchedRecipes;
 
-// thunk action creator
+// actions and thunk action creator
+export const { clearFetchedRecipes } = searchedRecipesSlice.actions;
 export const queryRecipe = (query) => {
   return async (dispatch, getState) => {
     try {

@@ -1,8 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../features/ingredient-basket/ingredientBasket.slice";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faUserGroup,
+  faClock,
+} from "@fortawesome/free-solid-svg-icons";
 
 import HowToComponent from "./rcard-htci.component";
 
@@ -24,6 +31,7 @@ const Recipe = styled.div`
 
   width: 1080px;
   margin: 30px 0;
+  background-color: var(--neutral-color1);
 
   border: 1px solid var(--primary-color);
   border-radius: 4px;
@@ -34,6 +42,10 @@ const RecipeImg = styled.img`
   --size: 300px;
   width: var(--size);
   height: var(--size);
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 
   align-self: start;
   border-radius: 50%;
@@ -107,20 +119,63 @@ const RecipeButton = styled.button`
   }
 `;
 
-const RecipeCard = ({ id, title, author, ingredients, source, image_url }) => {
+export const Colorize = styled.span`
+  color: var(--primary-color);
+`;
+
+const RecipeCard = ({
+  id,
+  title,
+  publisher,
+  ingredients,
+  servings,
+  cooking_time,
+  source_url,
+  image_url,
+}) => {
+  const dispatch = useDispatch();
+
+  const addRecipeToBasket = (e) => {
+    e.preventDefault();
+    dispatch(
+      addToBasket({
+        dishName: title,
+        ingredients: ingredients,
+        source: source_url,
+      })
+    );
+  };
+
   return (
     <RecipeCardContainer>
       <Recipe>
         <RecipeImg src={image_url} />
+        {/* TODO: Add serving size and time to make */}
         <RecipeSection>
           <RecipeName>{title}</RecipeName>
-          <RecipeAuthor>{author ? author : "Some Author"}</RecipeAuthor>
+          <RecipeAuthor>{publisher}</RecipeAuthor>
+          <RecipeContentGrid>
+            <RecipeTextContent>
+              <Colorize>
+                <FontAwesomeIcon icon={faUserGroup} />
+              </Colorize>
+              {servings} Servings
+            </RecipeTextContent>
+            <RecipeTextContent>
+              <Colorize>
+                <FontAwesomeIcon icon={faClock} />
+              </Colorize>
+              {cooking_time} Minutes
+            </RecipeTextContent>
+          </RecipeContentGrid>
           <RecipeContent>
             <RecipeHeaderContent>Ingredients</RecipeHeaderContent>
             <RecipeContentGrid>
               {ingredients.map(({ quantity, unit, description }) => (
                 <RecipeTextContent>
-                  <FontAwesomeIcon icon={faCheck} />
+                  <Colorize>
+                    <FontAwesomeIcon icon={faCheck} />
+                  </Colorize>
                   {decimalToFraction(quantity)} {unit} {description}
                 </RecipeTextContent>
               ))}
@@ -128,9 +183,11 @@ const RecipeCard = ({ id, title, author, ingredients, source, image_url }) => {
           </RecipeContent>
         </RecipeSection>
         <RecipeSection>
-          <HowToComponent source={source} author={author} />
+          <HowToComponent source={source_url} author={publisher} />
           <RecipeButtonContainer>
-            <RecipeButton typeOfButton="add">Add to Basket</RecipeButton>
+            <RecipeButton typeOfButton="add" onClick={addRecipeToBasket}>
+              Add to Basket
+            </RecipeButton>
             <RecipeButton typeOfButton="pin">Pin Recipe</RecipeButton>
           </RecipeButtonContainer>
         </RecipeSection>

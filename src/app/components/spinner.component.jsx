@@ -10,7 +10,7 @@ const LoadingContainer = styled.div`
   justify-content: center;
 
   width: 100%;
-  margin: 30px 0;
+  margin: 100px 0 0 0;
 `;
 
 const SpinnerContainer = styled.div`

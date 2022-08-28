@@ -1,7 +1,14 @@
 import React from "react";
+import { useDisplayIngredients } from "../../app/features/ingredient-basket/ingredientBasket.hook";
 
 const Basket = () => {
-  return <h1>Basket</h1>;
+  const { basket } = useDisplayIngredients();
+  console.log(basket);
+  return (
+    <p>
+      <strong>Basket:</strong> {JSON.stringify(basket)}
+    </p>
+  );
 };
 
 export default Basket;

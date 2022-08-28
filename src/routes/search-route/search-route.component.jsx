@@ -10,10 +10,8 @@ const SearchRoute = () => {
   return (
     <>
       <ForkifySearchBar />
-      {searchedRecipes.length !== 0 ? (
+      {searchedRecipes.length !== 0 && (
         <ForkifySearchResult searchedRecipes={searchedRecipes} />
-      ) : (
-        <h1>What are you waiting for? Start searching!</h1>
       )}
     </>
   );

@@ -16,8 +16,19 @@ const DishCardContainer = styled.div`
   cursor: pointer;
   transition: 300ms ease-in-out;
 
+  animation: fadein 2s;
+
   &:hover {
     background-color: var(--neutral-color2);
+  }
+
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 `;
 

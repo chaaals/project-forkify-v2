@@ -29,7 +29,7 @@ const HowToText = styled.h4`
   color: var(--primary-color);
 
   position: absolute;
-  background-color: #fff;
+  background-color: var(--neutral-color1);
   top: -8px;
 `;
 

@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { queryRecipe } from "./searchedRecipes.slice";
+
+import { useFoodSearch } from "./searchedFoodRecipes.hook";
+import { queryRecipe, clearFetchedRecipes } from "./searchedRecipes.slice";
 
 import SearchBar from "../../components/searchbar.component";
 
 const ForkifySearchBar = () => {
+  const { searchedRecipes } = useFoodSearch();
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
 
   const handleSubmitQuery = (e) => {
     e.preventDefault();
+    if (searchedRecipes.length !== 0) dispatch(clearFetchedRecipes());
+
     dispatch(queryRecipe(query));
   };
 

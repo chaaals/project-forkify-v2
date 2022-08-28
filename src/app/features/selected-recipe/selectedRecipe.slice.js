@@ -17,7 +17,9 @@ const selectedRecipeSlice = createSlice({
 // selector
 export const selectedRecipe = (state) => state.selectedRecipe;
 
-// thunk action creator
+// actions and thunk action creator
+export const { clearSelectedRecipe } = selectedRecipeSlice.actions;
+
 export const loadSelectedRecipe = (RECIPE_ID) => {
   return async (dispatch) => {
     const payload = await fetchSelectedRecipe(RECIPE_ID);
