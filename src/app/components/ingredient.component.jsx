@@ -14,7 +14,7 @@ const IngredientContainer = styled.div`
 const Ing = styled.div`
   display: grid;
   place-items: center;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 
   gap: 16px;
 `;
@@ -39,27 +39,6 @@ const IngText = styled.p`
   ${({ hover }) => (hover === true ? "cursor: pointer" : "")};
 `;
 
-const RemoveIng = styled.button`
-  /* parent styles */
-  justify-self: end;
-
-  /* component styles*/
-  font-size: 0.8rem;
-  padding: 0.5em 1em;
-
-  color: white;
-  background-color: orangered;
-
-  border: none;
-  border-radius: 25px;
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: #ffcccb;
-  }
-`;
-
 const Ingredient = ({ quantity, unit, description }) => {
   return (
     <IngredientContainer>
@@ -77,7 +56,6 @@ const Ingredient = ({ quantity, unit, description }) => {
             {description}
           </IngText>
         </IngContentContainer>
-        <RemoveIng>Remove</RemoveIng>
       </Ing>
     </IngredientContainer>
   );

@@ -39,6 +39,16 @@ const BasketHeader = styled.h1`
   color: var(--primary-color);
 `;
 
+const BasketMessageContainer = styled.div`
+  display: grid;
+  place-items: center;
+  width: 100%;
+`;
+const BasketMessage = styled.h4`
+  font-size: 1.25rem;
+  font-family: "Raleway", sans-serif;
+`;
+
 const BasketComponent = ({ basket, pinned }) => {
   return (
     <BasketContainer>
@@ -53,15 +63,22 @@ const BasketComponent = ({ basket, pinned }) => {
         <Basket>
           <BasketHeader>Basket</BasketHeader>
         </Basket>
-        <BasketContentGrid>
-          {basket.length !== 0 && (
+        {basket.length !== 0 ? (
+          <BasketContentGrid>
             <Carousel
               slides={basket.map(({ content }) => (
                 <BasketCardComponent {...content} />
               ))}
             />
-          )}
-        </BasketContentGrid>
+          </BasketContentGrid>
+        ) : (
+          <BasketMessageContainer>
+            <BasketMessage>
+              Your basket is looking dull, start searching for recipes and add
+              them here!
+            </BasketMessage>
+          </BasketMessageContainer>
+        )}
       </BasketContent>
     </BasketContainer>
   );

@@ -40,26 +40,38 @@ const BasketHeader = styled.h2`
   left: 35px;
 `;
 
-const BasketText = styled.a`
-  /* parent styles */
-  align-self: flex-end;
-
+const BasketText = styled.p`
   /* component styles */
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+
+    text-decoration: none;
+    color: var(--secondary-color);
+
+    transition: 300ms ease-in-out;
+    &:hover {
+      transform: scale(1.075);
+      color: var(--primary-color);
+    }
+  }
+
+  h4 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1rem;
+  }
+`;
+
+const BasketTextContent = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
 
-  font-family: "Roboto", sans-serif;
-  font-size: 1rem;
-
-  text-decoration: none;
-  color: var(--secondary-color);
-
-  transition: 300ms ease-in-out;
-  &:hover {
-    transform: scale(1.075);
-    color: var(--primary-color);
-  }
+  margin: 8px 10px;
 `;
 
 const BasketCard = styled.div`
@@ -71,20 +83,48 @@ const BasketCard = styled.div`
   flex-direction: column;
 `;
 
+const RemoveDish = styled.button`
+  /* component styles*/
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+
+  padding: 0.5em;
+  width: 100%;
+
+  color: white;
+  background-color: orangered;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: red;
+  }
+`;
+
 const BasketCardComponent = ({ dishName, author, ingredients, source }) => {
   return (
     <BasketCardContainer>
       <BasketHeader>
         {dishName} by {author}
       </BasketHeader>
-      <BasketCard>
-        <BasketText href={source} rel="noopener noreferrer" target="_blank">
-          Learn How to Cook it{" "}
-          <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+      <BasketTextContent>
+        <BasketText>
+          <h4>Ingredients</h4>
         </BasketText>
+        <BasketText>
+          <a href={source} rel="noopener noreferrer" target="_blank">
+            Learn How to Cook it
+            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
+          </a>
+        </BasketText>
+      </BasketTextContent>
+      <BasketCard>
         {ingredients.map((ingredient) => (
           <Ingredient {...ingredient} />
         ))}
+        <RemoveDish>Remove Dish</RemoveDish>
       </BasketCard>
     </BasketCardContainer>
   );
