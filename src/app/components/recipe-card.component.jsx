@@ -171,7 +171,7 @@ const RecipeCard = ({
           <RecipeButtonContainer>
             <RecipeButton
               typeOfButton="add"
-              onClick={(e) => onClick(e, { title, ingredients, source_url })}
+              onClick={(e) => onClick(e, { title, publisher, ingredients, source_url })}
             >
               Add to Basket
             </RecipeButton>

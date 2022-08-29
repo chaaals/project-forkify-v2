@@ -9,5 +9,10 @@ const pinnedRecipesSlice = createSlice({
   },
 });
 
-export const { removeRecipe } = pinnedRecipesSlice.actions;
+// selectors
+export const pinnedRecipes = (state) => state.pinnedRecipes;
+
+// actions
+export const { pinRecipe, removeRecipe } = pinnedRecipesSlice.actions;
+
 export default pinnedRecipesSlice.reducer;

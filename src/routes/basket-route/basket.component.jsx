@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import BasketCardComponent from "../../app/components/basketcard.component";
+import Carousel from "../../app/components/carousel.component";
+
 const BasketContainer = styled.section`
   display: flex;
   align-items: center;
@@ -19,6 +22,11 @@ const BasketContent = styled.div`
   width: 85%;
 `;
 
+const BasketContentGrid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+`;
+
 const Basket = styled.div`
   width: 100%;
   margin: 30px 0 15px 0;
@@ -31,22 +39,29 @@ const BasketHeader = styled.h1`
   color: var(--primary-color);
 `;
 
-const BasketComponent = ({ basket }) => {
+const BasketComponent = ({ basket, pinned }) => {
   return (
     <BasketContainer>
-      <BasketContent>
-        <Basket>
-          <BasketHeader>Pin</BasketHeader>
-        </Basket>
-      </BasketContent>
+      {pinned.length !== 0 && (
+        <BasketContent>
+          <Basket>
+            <BasketHeader>Pin</BasketHeader>
+          </Basket>
+        </BasketContent>
+      )}
       <BasketContent>
         <Basket>
           <BasketHeader>Basket</BasketHeader>
         </Basket>
-        <p>
-          <strong>Basket: </strong>
-          {JSON.stringify(basket)}
-        </p>
+        <BasketContentGrid>
+          {basket.length !== 0 && (
+            <Carousel
+              slides={basket.map(({ content }) => (
+                <BasketCardComponent {...content} />
+              ))}
+            />
+          )}
+        </BasketContentGrid>
       </BasketContent>
     </BasketContainer>
   );
