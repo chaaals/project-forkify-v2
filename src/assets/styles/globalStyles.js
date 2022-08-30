@@ -8,6 +8,7 @@ export const GlobalStyles = createGlobalStyle`
         --secondary-color: #9DAD7F;
         --neutral-color1: #F7F7E8;
         --neutral-color2: #C7CFB7;
+        --dark-primary: #3f5456;
         margin: 0;
         padding: 0;
         box-sizing: border-box;

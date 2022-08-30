@@ -18,12 +18,9 @@ const BasketModalContainer = styled.section`
   flex-direction: column;
 
   width: 100%;
-  height: 100vh;
   background-color: rgba(199, 207, 183, 0.65);
 
-  overflow-y: scroll;
   position: relative;
-
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +30,7 @@ const BasketModal = styled.div`
   width: 50%;
   height: 100vh;
 
-  margin: 30px;
+  margin: 30px auto;
   transition: 300ms ease-in-out;
   animation: pop 300ms linear;
 
@@ -66,8 +63,8 @@ const ExitModal = styled.button`
 const BasketCardContainer = styled.div`
   position: relative;
   width: 100%;
-  margin: 25px auto;
 
+  margin: 25px auto;
   border: 1px solid var(--primary-color);
   background-color: var(--neutral-color1);
 
@@ -137,6 +134,33 @@ const BasketCard = styled.div`
   flex-direction: column;
 `;
 
+const BasketIngredientContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  width: 100%;
+  height: 300px;
+  padding: 0rem 1rem;
+
+  gap: 8px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: var(--neutral-color1);
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 25px;
+    background: var(--primary-color);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--dark-primary);
+  }
+`;
+
 const RemoveDish = styled.button`
   /* component styles*/
   font-size: 1rem;
@@ -189,9 +213,11 @@ const BasketModalComponent = ({
             </BasketText>
           </BasketTextContent>
           <BasketCard>
-            {ingredients.map((ingredient) => (
-              <Ingredient {...ingredient} />
-            ))}
+            <BasketIngredientContainer>
+              {ingredients.map((ingredient) => (
+                <Ingredient {...ingredient} />
+              ))}
+            </BasketIngredientContainer>
             <RemoveDish onClick={onClick}>Remove Recipe</RemoveDish>
           </BasketCard>
         </BasketCardContainer>
