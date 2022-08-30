@@ -33,6 +33,7 @@ const BasketModal = styled.div`
   width: 50%;
   height: 100vh;
 
+  margin: 30px;
   transition: 300ms ease-in-out;
   animation: pop 300ms linear;
 

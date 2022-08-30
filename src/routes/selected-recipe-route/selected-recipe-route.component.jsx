@@ -3,6 +3,7 @@ import { useSelectRecipe } from "../../app/features/selected-recipe/selectedReci
 import { useDispatch } from "react-redux/es/exports";
 
 import { addToBasket } from "../../app/features/ingredient-basket/ingredientBasket.slice";
+import { pinRecipe } from "../../app/features/pin-recipes/pinnedRecipes.slice";
 import { clearSelectedRecipe } from "../../app/features/selected-recipe/selectedRecipe.slice";
 
 import RecipeCard from "../../app/components/recipe-card.component";
@@ -41,6 +42,12 @@ const SelectedRecipeRoute = () => {
     );
   };
 
+  const pinRecipeToBasket = (e, { title, image_url }) => {
+    e.preventDefault();
+    dispatch(pinRecipe({ title, image_url }));
+    console.log("i was pressed");
+  };
+
   const backToSearchEvent = () => {
     dispatch(clearSelectedRecipe());
   };
@@ -51,7 +58,11 @@ const SelectedRecipeRoute = () => {
       {recipe?.id === undefined ? (
         <Spinner />
       ) : (
-        <RecipeCard {...recipe} onClick={addRecipeToBasket} />
+        <RecipeCard
+          {...recipe}
+          addToBasket={addRecipeToBasket}
+          pinRecipe={pinRecipeToBasket}
+        />
       )}
     </>
   );

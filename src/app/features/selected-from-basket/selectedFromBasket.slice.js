@@ -7,9 +7,6 @@ const selectedFromBasketSlice = createSlice({
     loadSelectedModal: (state, action) => {
       return action.payload;
     },
-    clearSelectFromBasket: () => {
-      return [];
-    },
   },
 });
 
@@ -17,7 +14,6 @@ const selectedFromBasketSlice = createSlice({
 export const selected = (state) => state.selectFromBasket;
 
 // actions
-export const { loadSelectedModal, clearSelectFromBasket } =
-  selectedFromBasketSlice.actions;
+export const { loadSelectedModal } = selectedFromBasketSlice.actions;
 
 export default selectedFromBasketSlice.reducer;

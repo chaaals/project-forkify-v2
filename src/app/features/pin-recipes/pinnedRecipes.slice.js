@@ -4,7 +4,9 @@ const pinnedRecipesSlice = createSlice({
   name: "pinnedRecipes",
   initialState: [],
   reducers: {
-    pinRecipe: (state, action) => {},
+    pinRecipe: (state, action) => {
+      return [...state, action.payload];
+    },
     removeRecipe: (state, action) => {},
   },
 });

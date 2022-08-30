@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import BasketModalComponent from "../../app/components/basketcard-modal.component";
 import BasketCardComponent from "../../app/components/basketcard.component";
+import PinnedRecipeComponent from "../../app/components/pinned-recipe-card.component";
 
 import { useShowModal } from "../../app/features/selected-from-basket/selectedFromBasket.hook";
 
@@ -24,6 +25,12 @@ const BasketContent = styled.div`
   width: 85%;
 `;
 
+const BasketContentFlex = styled.div`
+  display: flex;
+  gap: 20px;
+
+  width: 80%;
+`;
 const BasketContentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -64,8 +71,13 @@ const BasketComponent = ({ basket, pinned }) => {
         {pinned.length !== 0 && (
           <BasketContent>
             <Basket>
-              <BasketHeader>Pin</BasketHeader>
+              <BasketHeader>Pinned Recipes</BasketHeader>
             </Basket>
+            <BasketContentFlex>
+              {pinned.map((recipes) => (
+                <PinnedRecipeComponent {...recipes} />
+              ))}
+            </BasketContentFlex>
           </BasketContent>
         )}
         <BasketContent>

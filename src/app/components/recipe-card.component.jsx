@@ -127,9 +127,10 @@ const RecipeCard = ({
   ingredients,
   servings,
   cooking_time,
-  onClick,
   source_url,
   image_url,
+  addToBasket,
+  pinRecipe,
 }) => {
   return (
     <RecipeCardContainer>
@@ -172,7 +173,7 @@ const RecipeCard = ({
             <RecipeButton
               typeOfButton="add"
               onClick={(e) =>
-                onClick(e, {
+                addToBasket(e, {
                   id,
                   title,
                   publisher,
@@ -186,7 +187,12 @@ const RecipeCard = ({
             >
               Add to Basket
             </RecipeButton>
-            <RecipeButton typeOfButton="pin">Pin Recipe</RecipeButton>
+            <RecipeButton
+              typeOfButton="pin"
+              onClick={(e) => pinRecipe(e, { title, image_url })}
+            >
+              Pin Recipe
+            </RecipeButton>
           </RecipeButtonContainer>
         </RecipeSection>
       </Recipe>
