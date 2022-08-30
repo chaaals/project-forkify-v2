@@ -18,9 +18,11 @@ const BasketModalContainer = styled.section`
   flex-direction: column;
 
   width: 100%;
-  background-color: rgba(199, 207, 183, 0.65);
+  margin: 60px 0 0 0;
 
-  position: relative;
+  transition: 300ms ease-in-out;
+
+  /* position: relative; */
   position: absolute;
   top: 0;
   left: 0;
@@ -28,10 +30,6 @@ const BasketModalContainer = styled.section`
 
 const BasketModal = styled.div`
   width: 50%;
-  height: 100vh;
-
-  margin: 30px auto;
-  transition: 300ms ease-in-out;
   animation: pop 300ms linear;
 
   @keyframes pop {
@@ -70,6 +68,7 @@ const BasketCardContainer = styled.div`
 
   border-radius: 25px;
   padding: 1.75rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   transition: 200ms opacity ease-in-out;
 
@@ -191,13 +190,13 @@ const BasketModalComponent = ({
 }) => {
   return (
     <BasketModalContainer>
-      <UndecoratedLink to="/basket">
-        <ExitModal>
-          <FontAwesomeIcon icon={faX} />
-        </ExitModal>
-      </UndecoratedLink>
       <BasketModal>
         <BasketCardContainer>
+          <UndecoratedLink to="/basket">
+            <ExitModal>
+              <FontAwesomeIcon icon={faX} />
+            </ExitModal>
+          </UndecoratedLink>
           <BasketHeader>
             {dishName} by {author}
           </BasketHeader>

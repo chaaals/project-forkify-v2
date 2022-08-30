@@ -31,11 +31,13 @@ const BasketContentFlex = styled.div`
 
   width: 80%;
 `;
+
 const BasketContentGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
   width: 80%;
+  margin: 0 0 30px 0;
 
   gap: 16px;
 `;
