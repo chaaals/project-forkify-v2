@@ -13,11 +13,30 @@ const SelectedRecipeRoute = () => {
   const { recipe } = useSelectRecipe();
   const dispatch = useDispatch();
 
-  const addRecipeToBasket = (e, { title, publisher, ingredients, source_url }) => {
+  const addRecipeToBasket = (
+    e,
+    {
+      id,
+      title,
+      publisher,
+      ingredients,
+      source_url,
+      servings,
+      cooking_time,
+      image_url,
+    }
+  ) => {
     e.preventDefault();
     dispatch(
       addToBasket({
-        content: { dishName: title, author: publisher, ingredients, source: source_url },
+        recipe_id: id,
+        modal: {
+          dishName: title,
+          author: publisher,
+          ingredients,
+          source: source_url,
+        },
+        card: { title, author: publisher, servings, cooking_time, image_url },
       })
     );
   };

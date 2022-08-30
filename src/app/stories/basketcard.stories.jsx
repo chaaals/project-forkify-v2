@@ -10,9 +10,10 @@ const Template = (args) => <BasketCardComponent {...args} />;
 export const BasketCard = Template.bind({});
 
 BasketCard.args = {
-  dishName: "Instant Oat Meal",
-  ingredients: Array.from({ length: 10 }, () => {
-    return { quantity: 1, unit: "cup", description: "oat meal" };
-  }),
-  source: "google.com",
+  title: "Adobo ni Ka-Sabado agsdgs",
+  author: "Ka-Sabado",
+  image_url:
+    "https://images.pexels.com/photos/13185294/pexels-photo-13185294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  servings: 4,
+  cooking_time: 60,
 };

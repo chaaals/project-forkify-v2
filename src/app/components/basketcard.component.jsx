@@ -2,131 +2,122 @@ import React from "react";
 import styled from "styled-components";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faUserGroup, faClock } from "@fortawesome/free-solid-svg-icons";
 
-import Ingredient from "./ingredient.component";
+import { UndecoratedLink } from "./navbar.component";
 
-const BasketCardContainer = styled.div`
-  position: relative;
+const BasketCardContainer = styled.section`
   width: 100%;
-  margin: 25px auto;
+  background-color: var(--neutral-color1);
 
-  border: 1px solid var(--primary-color);
   border-radius: 25px;
-  padding: 1.75rem;
+  cursor: pointer;
 
-  transition: 200ms opacity ease-in-out;
-
-  @keyframes fadein {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+  transition: 300ms ease-in-out;
+  &:hover {
+    background-color: var(--neutral-color2);
   }
-`;
-
-const BasketHeader = styled.h2`
-  font-size: 1.4rem;
-  font-family: "Raleway", sans-serif;
-
-  color: var(--primary-color);
-  background-color: #fff;
-
-  padding: 0.25em 0.75em;
-  position: absolute;
-  top: -20px;
-  left: 35px;
-`;
-
-const BasketText = styled.p`
-  /* component styles */
-  a {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-
-    text-decoration: none;
-    color: var(--secondary-color);
-
-    transition: 300ms ease-in-out;
-    &:hover {
-      transform: scale(1.075);
-      color: var(--primary-color);
-    }
-  }
-
-  h4 {
-    font-family: "Roboto", sans-serif;
-    font-size: 1rem;
-  }
-`;
-
-const BasketTextContent = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin: 8px 10px;
 `;
 
 const BasketCard = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  gap: 8px;
+  padding: 1rem;
+  gap: 16px;
+`;
+
+const BasketCardImg = styled.img`
+  --size: 100px;
+  width: var(--size);
+  height: var(--size);
+
+  align-self: center;
+  border-radius: 50%;
+`;
+
+const BasketCardContent = styled.div`
+  display: flex;
   flex-direction: column;
+  gap: 8px;
 `;
 
-const RemoveDish = styled.button`
-  /* component styles*/
-  font-size: 1rem;
+const BasketHeadingContainer = styled.div`
+  width: 250px;
+  overflow: hidden;
+`;
+
+const BasketCardHeading = styled.h2`
+  font-family: "Raleway", sans-serif;
+  color: var(--primary-color);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+const BasketCardSubHeading = styled.h4`
+  font-family: "Raleway", sans-serif;
+  color: var(--secondary-color);
+`;
+
+const BasketTextContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+`;
+
+const BasketCardText = styled.p`
   font-family: "Roboto", sans-serif;
+  font-size: 0.8rem;
+  color: black;
 
-  padding: 0.5em;
-  width: 100%;
-
-  color: white;
-  background-color: orangered;
-
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: red;
-  }
+  ${({ cta }) => (cta ? "text-decoration: underline; font-size: .75rem;" : "")}
 `;
 
-const BasketCardComponent = ({ dishName, author, ingredients, source }) => {
+const Colorize = styled.span`
+  color: var(--primary-color);
+`;
+
+const BasketCardComponent = ({
+  id,
+  title,
+  author,
+  image_url,
+  servings,
+  cooking_time,
+  onClick,
+}) => {
   return (
-    <BasketCardContainer>
-      <BasketHeader>
-        {dishName} by {author}
-      </BasketHeader>
-      <BasketTextContent>
-        <BasketText>
-          <h4>Ingredients</h4>
-        </BasketText>
-        <BasketText>
-          <a href={source} rel="noopener noreferrer" target="_blank">
-            Learn How to Cook it
-            <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
-          </a>
-        </BasketText>
-      </BasketTextContent>
-      <BasketCard>
-        {ingredients.map((ingredient) => (
-          <Ingredient {...ingredient} />
-        ))}
-        <RemoveDish>Remove Dish</RemoveDish>
-      </BasketCard>
-    </BasketCardContainer>
+    <UndecoratedLink to={`/basket/${id}`} onClick={onClick}>
+      <BasketCardContainer className="basket-card-container" id={id}>
+        <BasketCard>
+          <BasketCardImg src={image_url} />
+          <BasketCardContent>
+            <BasketHeadingContainer>
+              <BasketCardHeading title={title}>{title}</BasketCardHeading>
+              <BasketCardSubHeading>{author}</BasketCardSubHeading>
+            </BasketHeadingContainer>
+            <BasketTextContainer>
+              <BasketCardText>
+                <Colorize>
+                  <FontAwesomeIcon icon={faUserGroup} />
+                </Colorize>{" "}
+                {servings} Servings
+              </BasketCardText>
+              <BasketCardText>
+                <Colorize>
+                  <FontAwesomeIcon icon={faClock} />
+                </Colorize>{" "}
+                {cooking_time} Minutes
+              </BasketCardText>
+            </BasketTextContainer>
+            <BasketCardText cta={true}>
+              Click to view ingredients
+            </BasketCardText>
+          </BasketCardContent>
+        </BasketCard>
+      </BasketCardContainer>
+    </UndecoratedLink>
   );
 };
 

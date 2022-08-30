@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
+import BasketModalComponent from "../../app/components/basketcard-modal.component";
 import BasketCardComponent from "../../app/components/basketcard.component";
-import Carousel from "../../app/components/carousel.component";
+
+import { useShowModal } from "../../app/features/selected-from-basket/selectedFromBasket.hook";
 
 const BasketContainer = styled.section`
   display: flex;
@@ -24,7 +26,11 @@ const BasketContent = styled.div`
 
 const BasketContentGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(2, 1fr);
+
+  width: 80%;
+
+  gap: 16px;
 `;
 
 const Basket = styled.div`
@@ -50,37 +56,42 @@ const BasketMessage = styled.h4`
 `;
 
 const BasketComponent = ({ basket, pinned }) => {
+  const { selectedDish } = useShowModal();
   return (
-    <BasketContainer>
-      {pinned.length !== 0 && (
+    <>
+      {" "}
+      <BasketContainer>
+        {pinned.length !== 0 && (
+          <BasketContent>
+            <Basket>
+              <BasketHeader>Pin</BasketHeader>
+            </Basket>
+          </BasketContent>
+        )}
         <BasketContent>
           <Basket>
-            <BasketHeader>Pin</BasketHeader>
+            <BasketHeader>Basket</BasketHeader>
           </Basket>
-        </BasketContent>
-      )}
-      <BasketContent>
-        <Basket>
-          <BasketHeader>Basket</BasketHeader>
-        </Basket>
-        {basket.length !== 0 ? (
-          <BasketContentGrid>
-            <Carousel
-              slides={basket.map(({ content }) => (
-                <BasketCardComponent {...content} />
+          {basket.length !== 0 ? (
+            <BasketContentGrid>
+              {basket.map(({ recipe_id, card }) => (
+                <BasketCardComponent id={recipe_id} {...card} />
               ))}
-            />
-          </BasketContentGrid>
-        ) : (
-          <BasketMessageContainer>
-            <BasketMessage>
-              Your basket is looking dull, start searching for recipes and add
-              them here!
-            </BasketMessage>
-          </BasketMessageContainer>
-        )}
-      </BasketContent>
-    </BasketContainer>
+            </BasketContentGrid>
+          ) : (
+            <BasketMessageContainer>
+              <BasketMessage>
+                Your basket is looking dull, start searching for recipes and add
+                them here!
+              </BasketMessage>
+            </BasketMessageContainer>
+          )}
+        </BasketContent>
+      </BasketContainer>
+      {selectedDish?.selected_dish !== undefined && (
+        <BasketModalComponent {...selectedDish.selected_dish.modal} />
+      )}
+    </>
   );
 };
 
