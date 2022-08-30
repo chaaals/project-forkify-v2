@@ -57,13 +57,15 @@ const BasketMessageContainer = styled.div`
   place-items: center;
   width: 100%;
 `;
+
 const BasketMessage = styled.h4`
   font-size: 1.25rem;
   font-family: "Raleway", sans-serif;
 `;
 
 const BasketComponent = ({ basket, pinned }) => {
-  const { selectedDish } = useShowModal();
+  const { selectedDish, remove_recipe } = useShowModal();
+
   return (
     <>
       {" "}
@@ -101,7 +103,10 @@ const BasketComponent = ({ basket, pinned }) => {
         </BasketContent>
       </BasketContainer>
       {selectedDish?.selected_dish !== undefined && (
-        <BasketModalComponent {...selectedDish.selected_dish.modal} />
+        <BasketModalComponent
+          onClick={remove_recipe}
+          {...selectedDish.selected_dish.modal}
+        />
       )}
     </>
   );

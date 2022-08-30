@@ -12,7 +12,6 @@ const Basket = () => {
   const { recipe } = useSelectRecipe();
   const { pinnedRecipes } = usePinnedRecipes();
 
-  console.log(basket);
   return (
     <>
       <BreadCrumb

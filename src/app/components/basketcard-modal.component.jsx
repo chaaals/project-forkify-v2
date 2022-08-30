@@ -152,12 +152,19 @@ const RemoveDish = styled.button`
   border-radius: 8px;
   cursor: pointer;
 
+  z-index: 9999;
   &:hover {
     background-color: orangered;
   }
 `;
 
-const BasketModalComponent = ({ dishName, author, ingredients, source }) => {
+const BasketModalComponent = ({
+  dishName,
+  author,
+  ingredients,
+  source,
+  onClick,
+}) => {
   return (
     <BasketModalContainer>
       <UndecoratedLink to="/basket">
@@ -185,7 +192,7 @@ const BasketModalComponent = ({ dishName, author, ingredients, source }) => {
             {ingredients.map((ingredient) => (
               <Ingredient {...ingredient} />
             ))}
-            <RemoveDish>Remove Recipe</RemoveDish>
+            <RemoveDish onClick={onClick}>Remove Recipe</RemoveDish>
           </BasketCard>
         </BasketCardContainer>
       </BasketModal>

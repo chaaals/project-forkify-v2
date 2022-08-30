@@ -7,7 +7,9 @@ const ingredientBasketSlice = createSlice({
     addToBasket: (state, action) => {
       return [...state, action.payload];
     },
-    removeFromBasket: () => {},
+    removeFromBasket: (state, action) => {
+      return state.filter(({ recipe_id }) => recipe_id !== action.payload);
+    },
   },
 });
 

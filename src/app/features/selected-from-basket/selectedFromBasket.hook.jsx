@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useDisplayIngredients } from "../ingredient-basket/ingredientBasket.hook";
 
+import { removeFromBasket } from "../ingredient-basket/ingredientBasket.slice";
 import { loadSelectedModal } from "./selectedFromBasket.slice";
 import { selected } from "./selectedFromBasket.slice";
 
@@ -21,7 +22,13 @@ export const useShowModal = () => {
     );
   }, [basket_id, basket, dispatch]);
 
+  const remove = (e) => {
+    e.preventDefault();
+    dispatch(removeFromBasket(basket_id));
+  };
+
   return {
     selectedDish: useSelector(selected),
+    remove_recipe: remove,
   };
 };
