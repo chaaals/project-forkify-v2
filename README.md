@@ -54,4 +54,4 @@ Live demo: https://chaaals-forkify-v2.vercel.app/
 
 <hr>
 
-Developed with ❤️ by Charles Ching
+Redesigned and Developed with ❤️ by Charles Ching 🤓🤓
