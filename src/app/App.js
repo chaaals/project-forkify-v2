@@ -3,7 +3,6 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import ForkifyNavBar from "./components/navbar.component";
-import ForkifyFooter from "./components/footer.component";
 import Home from "../routes/home-route/home-route.component";
 import SearchRoute from "../routes/search-route/search-route.component";
 import SelectedRecipeRoute from "../routes/selected-recipe-route/selected-recipe-route.component";
@@ -26,7 +25,6 @@ function App() {
           <Route path=":basket_id" element={<Basket />} />
         </Route>
       </Routes>
-      <ForkifyFooter />
     </>
   );
 }

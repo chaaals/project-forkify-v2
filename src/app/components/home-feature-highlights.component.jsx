@@ -131,7 +131,7 @@ const FeatureHighlightsComponent = () => {
         <TextContainer>
           <HighlightSubText>
             Whatever you want<HighlightAccent> Forkify </HighlightAccent>has{" "}
-            <HighlightAccent>Got 'Em</HighlightAccent>
+            <HighlightAccent>Got 'Em!</HighlightAccent>
           </HighlightSubText>
         </TextContainer>
       </Highlights>
