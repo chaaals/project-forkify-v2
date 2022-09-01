@@ -1,6 +1,6 @@
 # Forkify Project
 
-<img src='publicpublic/images/forkify-overview.png' alt='overview'>
+<img src='public/images/forkify-overview.png' alt='overview'>
 
 #### Overview
 
@@ -50,3 +50,5 @@ Removing Recipe
 
 - Removed Recipe (refer to the picture in pinning feature to see removed recipe)
   <img src='public/images/forkify-removing-feature-inbasket.png' alt='removing-feature-inbasket' />
+
+Developed with ❤️ by Charles Ching
