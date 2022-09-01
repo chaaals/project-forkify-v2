@@ -2,7 +2,7 @@
 
 <img src='public/images/forkify-overview.png' alt='overview'>
 
-#### Overview
+## Overview
 
 Forkify is an idea that came from Jonas Schmedtmann's Javascript course. I redesigned and used the following tech stack to develop this project:
 
@@ -14,7 +14,7 @@ Forkify is an idea that came from Jonas Schmedtmann's Javascript course. I redes
 
 Live demo: https://chaaals-forkify-v2.vercel.app/
 
-#### Features
+## Features
 
 Search Feature
 
