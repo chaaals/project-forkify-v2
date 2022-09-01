@@ -8,6 +8,7 @@ Forkify is an idea that came from Jonas Schmedtmann's Javascript course. I redes
 
 - ReactJS
 - Redux toolkit
+- React Router
 - styled-components
 - Storybook
 - Forkify API provided by Jonas
