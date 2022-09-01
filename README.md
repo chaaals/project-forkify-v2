@@ -16,39 +16,42 @@ Live demo: https://chaaals-forkify-v2.vercel.app/
 
 ## Features
 
-Search Feature
+#### Search Feature
 
 - Search
   <img src='public/images/forkify-search-feature.png' alt='search-feature' />
 - Search Result
   <img src='public/images/forkify-search-feature-result.png' alt='search-feature-result' />
 
-Selecting Feature (in search)
+#### Selecting Feature (in search)
 
 - Selected Dish
   <img src='public/images/forkify-selecting-feature.png' alt='selecting-feature' />
 
-Basket Feature
+#### Basket Feature
+
 <img src='public/images/forkify-basket-feature.png' alt='basket-feature' />
 
-Adding Feature
+#### Adding Feature
 
 - Added Recipe
   <img src='public/images/forkify-adding-feature.png' alt='adding-feature' />
 
-Pinning Feature
+#### Pinning Feature
 
 - Pinned Recipe
   <img src='public/images/forkify-pinning-feature.png' alt='pinning-feature' />
 
-Selecting Feature (in basket)
+#### Selecting Feature (in basket)
 
 - Selected Recipe
   <img src='public/images/forkify-selecting-feature-inbasket.png' alt='selecting-feature-inbasket' />
 
-Removing Recipe
+#### Removing Recipe
 
 - Removed Recipe (refer to the picture in pinning feature to see removed recipe)
   <img src='public/images/forkify-removing-feature-inbasket.png' alt='removing-feature-inbasket' />
+
+<hr>
 
 Developed with ❤️ by Charles Ching
