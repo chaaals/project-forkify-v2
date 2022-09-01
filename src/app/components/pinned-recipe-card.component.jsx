@@ -11,7 +11,7 @@ const PinnedRecipeContainer = styled.div`
 `;
 
 const PinnedRecipeImg = styled.img`
-  --size: 100px;
+  --size: 75px;
   width: var(--size);
   height: var(--size);
 

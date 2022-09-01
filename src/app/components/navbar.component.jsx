@@ -19,8 +19,11 @@ const Navbar = styled.header`
   place-items: center;
   width: 100%;
 
-  border-bottom: 1px solid var(--primary-color);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   padding: 0.75rem;
+
+  position: relative;
+  z-index: 1;
 `;
 
 const Nav = styled.div`

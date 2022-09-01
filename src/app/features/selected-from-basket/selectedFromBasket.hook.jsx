@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useDisplayIngredients } from "../ingredient-basket/ingredientBasket.hook";
 
@@ -10,7 +10,9 @@ import { selected } from "./selectedFromBasket.slice";
 export const useShowModal = () => {
   const { basket } = useDisplayIngredients();
   const { basket_id } = useParams();
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(
@@ -25,6 +27,7 @@ export const useShowModal = () => {
   const remove = (e) => {
     e.preventDefault();
     dispatch(removeFromBasket(basket_id));
+    navigate("/basket");
   };
 
   return {
